@@ -4,7 +4,7 @@ let ops = [-3,3];
 
 // comment
 function setup() {
-  createCanvas(775,400);
+  createCanvas(windowWidth, windowHeight);
   for (let i = 0; i < 400; i+=60){
     values(i+15);
   }
