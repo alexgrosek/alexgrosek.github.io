@@ -1,40 +1,36 @@
-let xlist = [];
-let ylist = [];
-let ops = [-3,3];
+console.log( 'HI' );
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
-// comment
-function setup() {
-  createCanvas(windowWidth, windowHeight);
-  for (let i = 0; i < 400; i+=60){
-    values(i+15);
-  }
-}
-
-function draw() {
-  //background(220);
-  drawBlack();
-  xlist = [];
-  ylist = [];
-}
-
-function values(z){
-  for (let i = 0; i < 800; i+=8) {
-    x = random()*random(ops) + i
-    y = random()*random(ops) + z
-    append(xlist,x)
-    append(ylist,y)
-  redraw()
-}
-}
-
-function drawBlack(){
-  for (let i = 0; i < 800; i++) {
-      strokeWeight(3);
-      beginShape();
-      curveVertex(xlist[i],ylist[i])
-      curveVertex(xlist[i],ylist[i])
-      curveVertex(xlist[i+1],ylist[i+1])
-      curveVertex(xlist[i+1],ylist[i+1])
-      endShape(CLOSE);
-}
-}
+// Instantiate a loader
+const loader = new GLTFLoader();
+    
+// Load a glTF resource
+loader.load(
+  // resource URL
+  'Assets/Test.glb',
+  // called when the resource is loaded
+  function ( gltf ) {
+    
+    scene.add( gltf.scene );
+    
+    gltf.animations; // Array<THREE.AnimationClip>
+    gltf.scene; // THREE.Group
+    gltf.scenes; // Array<THREE.Group>
+    gltf.cameras; // Array<THREE.Camera>
+    gltf.asset; // Object
+    
+  },
+  
+  // called while loading is progressing
+  function ( xhr ) {
+    
+    console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+    
+  },
+  // called when loading has errors
+  function ( error ) {
+    
+    console.log( 'An error happened' );
+    
+      }
+);
