@@ -20,16 +20,22 @@
   <script type = "module" src = "three/OrbitControls.js"></script>
   <script type = "module">
     
-    import {GLTFLoader} from "./three/GLTFLoader.js";
-    //import {OrbitControls,MapControls} from "./three/OrbitControls.js";
+    import {OrbitControls} from "../three/OrbitControls.js";
+    import {GLTFLoader} from "../three/GLTFLoader.js";
     
     var loader = new GLTFLoader();
+
 
     var camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, .01, 1000 );
     
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    
+    //var controls = new OrbitControls(camera,renderer.domElement);
+    controls.update();
 
     var scene = new THREE.Scene();
     scene.background = new THREE.Color(0x000fff);
@@ -46,14 +52,17 @@
       gltf.scene.position.x = 4;
       scene.add(gltf.scene);
     });
+
+    var obj3;
+    loader.load("City_1.glb",function(gltf){
+      obj = gltf.scene;
+      gltf.scene.position.x = -4;
+      scene.add(gltf.scene);
+    });
     
     var light = new THREE.HemisphereLight(0xffffff,0x000000,2);
     scene.add(light);
     camera.position.set(0,5,20);
-
-    //const controls = new THREE.OrbitControls(camera, renderer.domElement)
-    //controls.update() must be called after any manual changes to the camera's transform
-    //controls.update();
 
     
     function animate (){
@@ -61,7 +70,7 @@
       //obj.rotation.x += .01;
       //obj.rotation.y += .01;
       	// required if controls.enableDamping or controls.autoRotate are set to true
-	    //controls.update();
+	    controls.update();
       renderer.render(scene,camera);
     }
     
