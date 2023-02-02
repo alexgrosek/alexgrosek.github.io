@@ -1,36 +1,63 @@
-console.log( 'HI' );
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+let r = 0;
+let x = 0;
+let y = 0;
+let j = 0;
 
-// Instantiate a loader
-const loader = new GLTFLoader();
-    
-// Load a glTF resource
-loader.load(
-  // resource URL
-  'Assets/Test.glb',
-  // called when the resource is loaded
-  function ( gltf ) {
-    
-    scene.add( gltf.scene );
-    
-    gltf.animations; // Array<THREE.AnimationClip>
-    gltf.scene; // THREE.Group
-    gltf.scenes; // Array<THREE.Group>
-    gltf.cameras; // Array<THREE.Camera>
-    gltf.asset; // Object
-    
-  },
+function setup() {
+  //let img = createImg("http://th07.deviantart.net/fs70/PRE/i/2011/260/3/5/dash_hooray_by_rainbowcrab-d49xk0d.png");
+  let img = createImg()
+  let div = createDiv("Look Around")
+
+  let canvas = createCanvas(windowWidth,windowHeight)
+  canvas.parent("p5js_canvas")
+  //angleMode(RADIANS);
+  //normalMaterial();
+
+  div.position(150, 175);
+  div.size(200, 200);
+
+  //img.position(50,50);
+  //img.size(100,100);
+  canvas.position(0,0);
+  // This is the inflection point, where you can EITHER have orbit control and div element or sketch.js and div element but for some reason you can't have all three....
+  //orbitControl();
+  controls.update();
+}
+
+function draw() {
+  // noStroke();
+  background(220, 180, 200,0);
+  // fill(180, 200, 40);
+  // strokeWeight(6);
+  // stroke(180, 100, 240);
+  // for (let i = 0; i < width; i += 15) {
+  //   line(i, 0, i, height);
+  // }
   
-  // called while loading is progressing
-  function ( xhr ) {
-    
-    console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-    
-  },
-  // called when loading has errors
-  function ( error ) {
-    
-    console.log( 'An error happened' );
-    
-      }
-);
+  // different script
+
+  //background(220,220,220)
+  push();
+  ellipse(width/3,height/3,10);
+  translate(width/3,height/3)
+  rotate(r=r+100);
+  fill('red')
+  ellipse(10,100,10);
+  pop();
+
+  // new script
+
+  push();
+  noStroke();
+  translate(400,400);
+  j=j+1;
+  y=sin(r=r+0.1) * j;
+  x=cos(r=r+0.1) * j;
+  stroke(0);
+  noFill(0,250,120);
+  ellipse(x,y++,14);
+  pop();
+
+  // orbitControl();
+  // controls.update();
+}
