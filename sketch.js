@@ -4,7 +4,7 @@ let y = 0;
 let j = 0;
 
 function setup() {
-  //let img = createImg("http://th07.deviantart.net/fs70/PRE/i/2011/260/3/5/dash_hooray_by_rainbowcrab-d49xk0d.png");
+  //let img = createImg("https://toppng.com/uploads/preview/north-arrow-11549436420yyvgvtd8b7.png");
   let img = createImg()
   let div = createDiv("Look Around")
 
@@ -13,11 +13,11 @@ function setup() {
   //angleMode(RADIANS);
   //normalMaterial();
 
-  div.position(150, 175);
+  div.position(1000, 450);
   div.size(200, 200);
 
-  //img.position(50,50);
-  //img.size(100,100);
+  // img.position(50,50);
+  // img.size(100,100);
   canvas.position(0,0);
   // This is the inflection point, where you can EITHER have orbit control and div element or sketch.js and div element but for some reason you can't have all three....
   //orbitControl();

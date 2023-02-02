@@ -9,8 +9,10 @@ var loader = new GLTFLoader();
 var scene = new THREE.Scene();
     scene.background = new THREE.Color(0x000fff);
 
-var camera = new THREE.PerspectiveCamera( 15, window.innerWidth / window.innerHeight, .01, 1000 );
-    camera.position.set(25,35,30);
+var camera = new THREE.PerspectiveCamera(6, window.innerWidth / window.innerHeight, .01, 10000 );
+    camera.position.set(-100,60,75);
+    //camera.lookAt(new THREE.Vector3(-200,0,0))
+    // camera.lookAt(-200,1000,50)
     console.log(camera.position);
 
 var renderer = new THREE.WebGLRenderer( { alpha: true } );
@@ -39,7 +41,7 @@ loader.load("City_1.glb",function(gltf){
   gltf.scene.castShadow = true;
   gltf.scene.recieveShadow = true;
   gltf.scene.position.x = -5;
-  gltf.scene.position.y = -9;
+  gltf.scene.position.y = 0;
   scene.add(gltf.scene);
 });
 
@@ -57,7 +59,7 @@ loader.load("City_2.glb",function(gltf){
   gltf.scene.castShadow = true;
   gltf.scene.recieveShadow = true;
   gltf.scene.position.x = -9;
-  gltf.scene.position.y = -9;
+  gltf.scene.position.y = 0;
   scene.add(gltf.scene);
 });
 
@@ -75,7 +77,48 @@ loader.load("City_3.glb",function(gltf){
   gltf.scene.castShadow = true;
   gltf.scene.recieveShadow = true;
   gltf.scene.position.x = -13;
-  gltf.scene.position.y = -9;
+  gltf.scene.position.y = 0;
+  gltf.scene.position.z = -2;
+
+  scene.add(gltf.scene);
+});
+
+var obj3;
+loader.load("City_3.glb",function(gltf){
+  obj3 = gltf.scene;
+  var newMaterial = new THREE.MeshPhongMaterial({color: 0xffffff, wireframe: false}); // set object color
+  var light1 = new THREE.PointLight( 0xff0040,.1,0); // light color, intensity and position
+  var light2 = new THREE.PointLight( 0x0040ff,.1,0 ); // light color, intensity and position
+  var light3 = new THREE.PointLight( 0xff80ff,.1,0 ); // light color, intensity and position
+  scene.add( light1,light2,light3 ); // turn on point lights
+  obj3.traverse((o) => {
+    if (o.isMesh || o.isLight) {o.castShadow = true, o.material = newMaterial;} // 
+  });      
+  gltf.scene.castShadow = true;
+  gltf.scene.recieveShadow = true;
+  gltf.scene.position.x = -5;
+  gltf.scene.position.y = 0;
+  gltf.scene.position.z = 7;
+
+  scene.add(gltf.scene);
+});
+
+var obj4;
+loader.load("City_4.glb",function(gltf){
+  obj4 = gltf.scene;
+  var newMaterial = new THREE.MeshPhongMaterial({color: 0xffffff, wireframe: false}); // set object color
+  var light1 = new THREE.PointLight( 0xff0040,.1,50 ); // light color, intensity and position
+  var light2 = new THREE.PointLight( 0x0040ff,.1,50 ); // light color, intensity and position
+  var light3 = new THREE.PointLight( 0xff80ff,.1,50 ); // light color, intensity and position
+  scene.add( light1,light2,light3 ); // turn on point lights
+  obj4.traverse((o) => {
+    if (o.isMesh || o.isLight) {o.castShadow = true, o.material = newMaterial;} // 
+  });      
+  gltf.scene.castShadow = true;
+  gltf.scene.recieveShadow = true;
+  gltf.scene.position.x = -10;
+  gltf.scene.position.y = 0;
+  gltf.scene.position.z = -7;
 
   scene.add(gltf.scene);
 });
