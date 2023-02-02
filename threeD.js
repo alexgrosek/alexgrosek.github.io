@@ -43,6 +43,43 @@ loader.load("City_1.glb",function(gltf){
   scene.add(gltf.scene);
 });
 
+var obj2;
+loader.load("City_2.glb",function(gltf){
+  obj2 = gltf.scene;
+  var newMaterial = new THREE.MeshPhongMaterial({color: 0xffffff, wireframe: false}); // set object color
+  var light1 = new THREE.PointLight( 0xff0040,.1,50 ); // light color, intensity and position
+  var light2 = new THREE.PointLight( 0x0040ff,.1,50 ); // light color, intensity and position
+  var light3 = new THREE.PointLight( 0xff80ff,.1,50 ); // light color, intensity and position
+  scene.add( light1,light2,light3 ); // turn on point lights
+  obj2.traverse((o) => {
+    if (o.isMesh || o.isLight) {o.castShadow = true, o.material = newMaterial;} // 
+  });      
+  gltf.scene.castShadow = true;
+  gltf.scene.recieveShadow = true;
+  gltf.scene.position.x = -9;
+  gltf.scene.position.y = -9;
+  scene.add(gltf.scene);
+});
+
+var obj3;
+loader.load("City_3.glb",function(gltf){
+  obj3 = gltf.scene;
+  var newMaterial = new THREE.MeshPhongMaterial({color: 0xffffff, wireframe: false}); // set object color
+  var light1 = new THREE.PointLight( 0xff0040,.1,50 ); // light color, intensity and position
+  var light2 = new THREE.PointLight( 0x0040ff,.1,50 ); // light color, intensity and position
+  var light3 = new THREE.PointLight( 0xff80ff,.1,50 ); // light color, intensity and position
+  scene.add( light1,light2,light3 ); // turn on point lights
+  obj3.traverse((o) => {
+    if (o.isMesh || o.isLight) {o.castShadow = true, o.material = newMaterial;} // 
+  });      
+  gltf.scene.castShadow = true;
+  gltf.scene.recieveShadow = true;
+  gltf.scene.position.x = -13;
+  gltf.scene.position.y = -9;
+
+  scene.add(gltf.scene);
+});
+
 function addLight(){
     var ambientLight = new THREE.AmbientLight( 0xcccccc );
     scene.add( ambientLight );
