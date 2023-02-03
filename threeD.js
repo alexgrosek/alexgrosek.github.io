@@ -115,11 +115,11 @@ let obj3;
 let obj4;
 let obj5;
 
-threeLoad(obj,"City_1.glb",0,-6,0,0,0xffffff,true);
-threeLoad(obj2,"City_2.glb",-2,-6,0,0,0xffffff,true);
-threeLoad(obj3,"City_3.glb",-6,-6,-2,0,0xffffff,true);
-threeLoad(obj4,"City_3.glb",0,-6,7,0,0xffffff,false);
-threeLoad(obj5,"City_4.glb",4,-6,5,0,0xffffff,false);
+threeLoad(obj,"City_1.glb",-0.5,-6,0,0,0xffffff,true);
+threeLoad(obj2,"City_2.glb",-2.5,-6,0,0,0xffffff,true);
+threeLoad(obj3,"City_3.glb",-6.5,-6,-2,0,0xffffff,true);
+threeLoad(obj4,"City_3.glb",-0.5,-6,7,0,0xffffff,false);
+threeLoad(obj5,"City_4.glb",3.5,-6,5,0,0xffffff,false);
 
 function animate (){
     requestAnimationFrame(animate);
