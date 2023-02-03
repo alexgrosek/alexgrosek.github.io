@@ -18,7 +18,7 @@ const textureloader = new THREE.TextureLoader();
 //textureloader.load('https://images.pexels.com/photos/1205301/pexels-photo-1205301.jpeg' , function(texture)
 //textureloader.load('Stephans-Quintet.jpg' , function(texture)
 //textureloader.load('Southern-Ring-Nebula.jpg' , function(texture)
-textureloader.load('Cosmic-Cliffs.jpg' , function(texture)
+textureloader.load('Media/Cosmic-Cliffs.jpg' , function(texture)
     {
         scene.background = texture;  
     });
@@ -42,7 +42,8 @@ var renderer = new THREE.WebGLRenderer( { alpha: true } );
 var controls = new OrbitControls(camera, renderer.domElement);
     controls.update();
 
-var ambientLight = new THREE.AmbientLight( 0xcccccc,.17 );
+//var ambientLight = new THREE.AmbientLight( 0x5f5fd7,.5 );
+var ambientLight = new THREE.AmbientLight( 0xcccccc,.2 );
     scene.add( ambientLight );
 
 // var directionalLight = new THREE.DirectionalLight( 0xff0040, .1,0 );
@@ -86,7 +87,6 @@ function loadToScene(model,xval,yval,zval,rval){
 }
 
 function threeLoad(stag,file,xval,yval,zval,rval,clr,copy) {
-    //var cities = new Array();
     loader.load(file,function(gltf){
         const model = gltf.scene;
         var newMaterial = new THREE.MeshLambertMaterial({color: clr, wireframe: false}); // set object color
@@ -101,12 +101,10 @@ function threeLoad(stag,file,xval,yval,zval,rval,clr,copy) {
         model.position.z = zval;
         model.rotation.y += rval;
         scene.add(model);
-        //cities.push(stag)
         if (copy == true){
             loadToScene(model,xval+7,yval,zval-7, Math.PI / 2)
         }
       });
-    //loadToScene(cities[0],xval,10,zval)
 }
 
 let obj;
@@ -115,23 +113,17 @@ let obj3;
 let obj4;
 let obj5;
 
-threeLoad(obj,"City_1.glb",-0.5,-6,0,0,0xffffff,true);
-threeLoad(obj2,"City_2.glb",-2.5,-6,0,0,0xffffff,true);
-threeLoad(obj3,"City_3.glb",-6.5,-6,-2,0,0xffffff,true);
-threeLoad(obj4,"City_3.glb",-0.5,-6,7,0,0xffffff,false);
-threeLoad(obj5,"City_4.glb",3.5,-6,5,0,0xffffff,false);
+threeLoad(obj,"Models/City_1.glb",-0.5,-6,0,0,0xffffff,true);
+threeLoad(obj2,"Models/City_2.glb",-2.5,-6,0,0,0xffffff,true);
+threeLoad(obj3,"Models/City_3.glb",-6.5,-6,-2,0,0xffffff,true);
+threeLoad(obj4,"Models/City_3.glb",-0.5,-6,7,0,0xffffff,false);
+threeLoad(obj5,"Models/City_4.glb",3.5,-6,5,0,0xffffff,false);
 
 function animate (){
     requestAnimationFrame(animate);
     renderer.render(scene,camera);
-    //flycontrols.update();
-    //obj.rotation.y += .001;
-    // obj2.rotation.x += .001;
-    // obj3.rotation.y += .001;
-      // required if controls.enableDamping or controls.autoRotate are set to true
-    //controls.update();
-    // draw();
-    // flycontrols.update();
+    scene.rotation.y += .001;
+    scene.rotation.x += .001;
     revolve();
   }
 
