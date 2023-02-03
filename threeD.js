@@ -14,17 +14,17 @@ var loader = new GLTFLoader();
 var scene = new THREE.Scene();
     //scene.background = new THREE.Color(0x000fff);
 
-const textureloader = new THREE.TextureLoader();
-//textureloader.load('https://images.pexels.com/photos/1205301/pexels-photo-1205301.jpeg' , function(texture)
-//textureloader.load('Stephans-Quintet.jpg' , function(texture)
-//textureloader.load('Southern-Ring-Nebula.jpg' , function(texture)
-textureloader.load('Media/Cosmic-Cliffs.jpg' , function(texture)
-    {
-        scene.background = texture;  
-    });
+// const textureloader = new THREE.TextureLoader();
+// //textureloader.load('https://images.pexels.com/photos/1205301/pexels-photo-1205301.jpeg' , function(texture)
+// //textureloader.load('Stephans-Quintet.jpg' , function(texture)
+// //textureloader.load('Southern-Ring-Nebula.jpg' , function(texture)
+// textureloader.load('Media/Cosmic-Cliffs.jpg' , function(texture)
+//     {
+//         scene.background = texture;  
+//     });
 
-var camera = new THREE.PerspectiveCamera(6, window.innerWidth / window.innerHeight, .01, 10000 );
-    camera.position.set(-100,45,100);
+var camera = new THREE.PerspectiveCamera(3, window.innerWidth / window.innerHeight, .01, 10000 );
+    camera.position.set(-100,90,100);
     console.log(camera.position);
 
 var renderer = new THREE.WebGLRenderer( { alpha: true } );
@@ -42,8 +42,8 @@ var renderer = new THREE.WebGLRenderer( { alpha: true } );
 var controls = new OrbitControls(camera, renderer.domElement);
     controls.update();
 
-//var ambientLight = new THREE.AmbientLight( 0x5f5fd7,.5 );
-var ambientLight = new THREE.AmbientLight( 0xcccccc,.2 );
+var ambientLight = new THREE.AmbientLight( 0x5f5fd7,.5 );
+//var ambientLight = new THREE.AmbientLight( 0xcccccc,.2 );
     scene.add( ambientLight );
 
 // var directionalLight = new THREE.DirectionalLight( 0xff0040, .1,0 );
@@ -54,9 +54,9 @@ var ambientLight = new THREE.AmbientLight( 0xcccccc,.2 );
 //     //directionalLight.position.set(1,1,0);
 //     scene.add( directionalLight );
 
-var light1 = new THREE.PointLight( 0xff0040,.5,50 ); // light color, intensity and position
-var light2 = new THREE.PointLight( 0x0040ff,.5,50 ); // light color, intensity and position
-var light3 = new THREE.PointLight( 0xff80ff,.5,50 ); // light color, intensity and position
+var light1 = new THREE.PointLight( 0xff0040,1,50 ); // light color, intensity and position
+var light2 = new THREE.PointLight( 0x0040ff,1,50 ); // light color, intensity and position
+var light3 = new THREE.PointLight( 0xff80ff,1,50 ); // light color, intensity and position
 
 function revolve(){
   var time = Date.now()*.001;
@@ -122,8 +122,8 @@ threeLoad(obj5,"Models/City_4.glb",3.5,-6,5,0,0xffffff,false);
 function animate (){
     requestAnimationFrame(animate);
     renderer.render(scene,camera);
-    scene.rotation.y += .001;
-    scene.rotation.x += .001;
+    //scene.rotation.y += .001;
+    //scene.rotation.x += .001;
     revolve();
   }
 
