@@ -10,7 +10,7 @@ let m = 0;
 function setup() {
   let img = createImg("https://media.giphy.com/media/GPWKoHhTMmjTYqOTVG/giphy.gif");
   //let img = createImg();
-    img.position(1000,100);
+    img.position(1200,75);
     img.size(150,150);
   
   // let div = createDiv("Look Around");
