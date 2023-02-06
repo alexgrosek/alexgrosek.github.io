@@ -1,3 +1,3 @@
 # Welcome to my website code repository for alexgrosek.com.
 
-ThreeD.js contains the GLTF loader and scene settings
+The "./ThreeD.js" file contains the GLTF loader and animation settings.
