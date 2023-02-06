@@ -29,7 +29,8 @@ function setup() {
 
 function draw() {
 
-  background(220, 180, 200,255);
+  background(220, 180, 200,0);
+}
 
   // ellipse(width/3,height/3,10);
   // translate(width/3,height/3)
@@ -58,4 +59,3 @@ function draw() {
   // pop();
 
  
-}

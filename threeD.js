@@ -1,6 +1,25 @@
 // Import the necessary libraries for orbiting and loading 3D models
 
+const colors = new Array('aliceblue', 'antiquewhite', 'aqua', 'aquamarine', 'azure', 'beige', 'bisque', 
+'black', 'blanchedalmond', 'blue', 'blueviolet', 'brown', 'burlywood', 'cadetblue', 'chartreuse', 'chocolate', 
+'coral', 'cornflowerblue', 'cornsilk', 'crimson', 'cyan', 'darkblue', 'darkcyan', 'darkgoldenrod', 'darkgray', 
+'darkgrey', 'darkgreen', 'darkkhaki', 'darkmagenta', 'darkolivegreen', 'darkorange', 'darkorchid', 'darkred', 
+'darksalmon', 'darkseagreen', 'darkslateblue', 'darkslategray', 'darkslategrey', 'darkturquoise', 'darkviolet', 
+'deeppink', 'deepskyblue', 'dimgray', 'dimgrey', 'dodgerblue', 'firebrick', 'floralwhite', 'forestgreen', 'fuchsia', 
+'gainsboro', 'ghostwhite', 'gold', 'goldenrod', 'gray', 'grey', 'green', 'greenyellow', 'honeydew', 'hotpink', 
+'indianred', 'indigo', 'ivory', 'khaki', 'lavender', 'lavenderblush', 'lawngreen', 'lemonchiffon', 'lightblue', 
+'lightcoral', 'lightcyan', 'lightgoldenrodyellow', 'lightgray', 'lightgrey', 'lightgreen', 'lightpink', 'lightsalmon', 
+'lightseagreen', 'lightskyblue', 'lightslategray', 'lightslategrey', 'lightsteelblue', 'lightyellow', 'lime', 'limegreen', 
+'linen', 'magenta', 'maroon', 'mediumaquamarine', 'mediumblue', 'mediumorchid', 'mediumpurple', 'mediumseagreen', 'mediumslateblue', 
+'mediumspringgreen', 'mediumturquoise', 'mediumvioletred', 'midnightblue', 'mintcream', 'mistyrose', 'moccasin', 'navajowhite', 
+'navy', 'oldlace', 'olive', 'olivedrab', 'orange', 'orangered', 'orchid', 'palegoldenrod', 'palegreen', 'paleturquoise', 
+'palevioletred', 'papayawhip', 'peachpuff', 'peru', 'pink', 'plum', 'powderblue', 'purple', 'rebeccapurple', 'red', 'rosybrown', 
+'royalblue', 'saddlebrown', 'salmon', 'sandybrown', 'seagreen', 'seashell', 'sienna', 'silver', 'skyblue', 'slateblue', 
+'slategray', 'slategrey', 'snow', 'springgreen', 'steelblue', 'tan', 'teal', 'thistle', 'tomato', 'turquoise', 'violet', 'wheat', 
+'white', 'whitesmoke', 'yellow', 'yellowgreen');
+//let word = random(colors);
 
+//console.log(colors[0]);
 
 //import { SkeletonUtils } from 'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/jsm/utils/SkeletonUtils.js';
 import { OrbitControls } from "../three/OrbitControls.js";
@@ -12,8 +31,22 @@ import { clone } from "../three/SkeletonUtils.js";
 var loader = new GLTFLoader();
 
 var scene = new THREE.Scene();
-    //scene.background = new THREE.Color(0x000fff);
+    scene.background = new THREE.Color('black');
 
+    // for (let i = 0; i<length(colors); i++ ) {
+    //     scene.background = new THREE.Color(colors[i]);
+    //     //if (i = length(colors)) { i = 0 };
+    //     //}
+    //   }
+// random colors from list
+//function rndclr(){
+    //for (let i = 0; i<length(colors); i++ ) {
+//scene.background = new THREE.Color(colors[50]);
+        //if (i >= length(colors)) { i = 0 };
+        //}
+    //}
+
+//rndclr();
 // const textureloader = new THREE.TextureLoader();
 // //textureloader.load('https://images.pexels.com/photos/1205301/pexels-photo-1205301.jpeg' , function(texture)
 // //textureloader.load('Stephans-Quintet.jpg' , function(texture)
@@ -23,9 +56,12 @@ var scene = new THREE.Scene();
 //         scene.background = texture;  
 //     });
 
-var camera = new THREE.PerspectiveCamera(3, window.innerWidth / window.innerHeight, .01, 10000 );
-    camera.position.set(-100,90,100);
-    console.log(camera.position);
+var camera = new THREE.PerspectiveCamera(8.5, window.innerWidth / window.innerHeight, .01, 10000 );
+    //camera.position.set(-100,90,100);
+    //camera.lookAt(new THREE.Vector3(100,50,100));
+    camera.position.set(10,20,100);
+    
+    //console.log(camera.position);
 
 var renderer = new THREE.WebGLRenderer( { alpha: true } );
     renderer.setClearColor( 0x000000, 0 ); // the default
@@ -42,21 +78,26 @@ var renderer = new THREE.WebGLRenderer( { alpha: true } );
 var controls = new OrbitControls(camera, renderer.domElement);
     controls.update();
 
-var ambientLight = new THREE.AmbientLight( 0x5f5fd7,.5 );
+//var ambientLight = new THREE.AmbientLight( 0x000fff,1 );
+var ambientLight = new THREE.AmbientLight( 'skyblue',.1 );
 //var ambientLight = new THREE.AmbientLight( 0xcccccc,.2 );
     scene.add( ambientLight );
 
-// var directionalLight = new THREE.DirectionalLight( 0xff0040, .1,0 );
-//     directionalLight.position.set(-1,-1,0);
-//     scene.add( directionalLight );
+ var directionalLight = new THREE.DirectionalLight( 0x0040ff, .5,0 );
+     directionalLight.position.set(-1,-1,0); // probably in radians?
+     scene.add( directionalLight );
 
-// var directionalLight = new THREE.DirectionalLight( 0xff80ff, .1,0 );
-//     //directionalLight.position.set(1,1,0);
-//     scene.add( directionalLight );
+ var directionalLight2 = new THREE.DirectionalLight( 0x0040ff, .6,0 );
+     directionalLight2.position.set(1,10,0);
+     scene.add( directionalLight2 );
 
-var light1 = new THREE.PointLight( 0xff0040,1,50 ); // light color, intensity and position
-var light2 = new THREE.PointLight( 0x0040ff,1,50 ); // light color, intensity and position
-var light3 = new THREE.PointLight( 0xff80ff,1,50 ); // light color, intensity and position
+// var light1 = new THREE.PointLight( 0xff0040,.5,50 ); // light color, intensity and position R
+// var light2 = new THREE.PointLight( 0x0040ff,.5,50 ); // light color, intensity and position B
+// var light3 = new THREE.PointLight( 0xff80ff,.5,50 ); // light color, intensity and position Pink
+
+var light1 = new THREE.PointLight( 'blue',1,50 ); // light color, intensity and position
+var light2 = new THREE.PointLight( 'red',1,50 ); // light color, intensity and position
+var light3 = new THREE.PointLight( 'yellow',1,50 ); // light color, intensity and position
 
 function revolve(){
   var time = Date.now()*.001;
@@ -113,11 +154,11 @@ let obj3;
 let obj4;
 let obj5;
 
-threeLoad(obj,"Models/City_1.glb",-0.5,-6,0,0,0xffffff,true);
-threeLoad(obj2,"Models/City_2.glb",-2.5,-6,0,0,0xffffff,true);
-threeLoad(obj3,"Models/City_3.glb",-6.5,-6,-2,0,0xffffff,true);
-threeLoad(obj4,"Models/City_3.glb",-0.5,-6,7,0,0xffffff,false);
-threeLoad(obj5,"Models/City_4.glb",3.5,-6,5,0,0xffffff,false);
+threeLoad(obj,"Models/City_1.glb",-5.5,-5,0,0,0xffffff,false);
+threeLoad(obj2,"Models/City_2.glb",-7.5,-5,0,0,0xffffff,true);
+threeLoad(obj3,"Models/City_3.glb",-11.5,-5,-2,0,0xffffff,true);
+threeLoad(obj4,"Models/City_3.glb",-5.5,-5,7,0,0xffffff,false);
+threeLoad(obj5,"Models/City_4.glb",-2.5,-5,5,0,0xcccccc,false);
 
 function animate (){
     requestAnimationFrame(animate);
