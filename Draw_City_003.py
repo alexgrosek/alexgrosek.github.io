@@ -1,3 +1,4 @@
+"""
 # Import libraries
 import rhinoscriptsyntax as rs
 import random
@@ -187,3 +188,4 @@ myBuilding = rs.GetObject ("Select building to get address")
 while myBuilding:
     getAddress (myBuilding)
     myBuilding = rs.GetObject ("Select building to get address")
+"""
