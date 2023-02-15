@@ -31,7 +31,7 @@ import { clone } from "../three/SkeletonUtils.js";
 var loader = new GLTFLoader();
 
 var scene = new THREE.Scene();
-    scene.background = new THREE.Color('black');
+    scene.background = new THREE.Color('blue');
 
     // for (let i = 0; i<length(colors); i++ ) {
     //     scene.background = new THREE.Color(colors[i]);
@@ -56,10 +56,10 @@ var scene = new THREE.Scene();
 //         scene.background = texture;  
 //     });
 
-var camera = new THREE.PerspectiveCamera(8.5, window.innerWidth / window.innerHeight, .01, 10000 );
+var camera = new THREE.PerspectiveCamera(9.5, window.innerWidth / window.innerHeight, .01, 10000 );
     //camera.position.set(-100,90,100);
     //camera.lookAt(new THREE.Vector3(100,50,100));
-    camera.position.set(10,20,100);
+    camera.position.set(-50,20,50);
     
     //console.log(camera.position);
 
@@ -79,7 +79,7 @@ var controls = new OrbitControls(camera, renderer.domElement);
     controls.update();
 
 //var ambientLight = new THREE.AmbientLight( 0x000fff,1 );
-var ambientLight = new THREE.AmbientLight( 'skyblue',.1 );
+var ambientLight = new THREE.AmbientLight( 'lightorange',.5 );
 //var ambientLight = new THREE.AmbientLight( 0xcccccc,.2 );
     scene.add( ambientLight );
 
@@ -95,7 +95,7 @@ var ambientLight = new THREE.AmbientLight( 'skyblue',.1 );
 // var light2 = new THREE.PointLight( 0x0040ff,.5,50 ); // light color, intensity and position B
 // var light3 = new THREE.PointLight( 0xff80ff,.5,50 ); // light color, intensity and position Pink
 
-var light1 = new THREE.PointLight( 'blue',1,50 ); // light color, intensity and position
+var light1 = new THREE.PointLight( 'blue',.1,50 ); // light color, intensity and position
 var light2 = new THREE.PointLight( 'red',1,50 ); // light color, intensity and position
 var light3 = new THREE.PointLight( 'yellow',1,50 ); // light color, intensity and position
 
@@ -154,11 +154,11 @@ let obj3;
 let obj4;
 let obj5;
 
-threeLoad(obj,"Models/City_1.glb",-5.5,-5,0,0,0xffffff,false);
-threeLoad(obj2,"Models/City_2.glb",-7.5,-5,0,0,0xffffff,true);
-threeLoad(obj3,"Models/City_3.glb",-11.5,-5,-2,0,0xffffff,true);
-threeLoad(obj4,"Models/City_3.glb",-5.5,-5,7,0,0xffffff,false);
-threeLoad(obj5,"Models/City_4.glb",-2.5,-5,5,0,0xcccccc,false);
+threeLoad(obj,"Models/City_1.glb",-0,-6,0,0,0xffffff,false);
+//threeLoad(obj2,"Models/City_2.glb",-7.5,-5,0,0,0xffffff,true);
+//threeLoad(obj3,"Models/City_3.glb",-11.5,-5,-2,0,0xffffff,true);
+//threeLoad(obj4,"Models/City_3.glb",-5.5,-5,7,0,0xffffff,false);
+//threeLoad(obj5,"Models/City_4.glb",-2.5,-5,5,0,0xcccccc,false);
 
 function animate (){
     requestAnimationFrame(animate);
