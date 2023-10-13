@@ -31,7 +31,7 @@ import { clone } from "../three/SkeletonUtils.js";
 var loader = new GLTFLoader();
 
 var scene = new THREE.Scene();
-    scene.background = new THREE.Color('blueviolet');
+    scene.background = new THREE.Color('blue');
 
     // for (let i = 0; i<length(colors); i++ ) {
     //     scene.background = new THREE.Color(colors[i]);
