@@ -31,7 +31,7 @@ import { clone } from "../three/SkeletonUtils.js";
 var loader = new GLTFLoader();
 
 var scene = new THREE.Scene();
-    scene.background = new THREE.Color('blue');
+    scene.background = new THREE.Color('red');
 
     // for (let i = 0; i<length(colors); i++ ) {
     //     scene.background = new THREE.Color(colors[i]);
@@ -65,7 +65,7 @@ var camera = new THREE.PerspectiveCamera(9.5, window.innerWidth / window.innerHe
 
 var renderer = new THREE.WebGLRenderer( { alpha: true } );
     renderer.setClearColor( 0x000000, 0 ); // the default
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(window.innerWidth, window.innerHeight); // set size of render window
     document.body.appendChild(renderer.domElement);
 
 // var flycontrols = new THREE.FlyControls( camera, render.domElement );
